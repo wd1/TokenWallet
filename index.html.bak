@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script>
+		//if (window.location.protocol != "https:")
+		//window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+	</script>
+	<title>WorldBit Token Wallet</title>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<meta name="description" content="WorldBit Token Wallet">
+	<link rel="shortcut icon" href="favicon.png">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="stylesheet" href="css/dashboardred.css?v=4">
+	<link rel="stylesheet" href="css/progress.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.6/sweetalert2.min.css">
+	<link rel="stylesheet" href="css/jquery-u.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-WV2728K');</script>
+	<!-- End Google Tag Manager -->
+
+</head>
+
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WV2728K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	<header>
+		<div class="logo-container">
+			<center>
+				<img src="images/logo.png">
+			</center>
+			<div class="wallet-desc" style="display: none" id="desc_main">
+				<p class="small-margin">This is your WorldBit Wallet. It will show both your Ethereum balance and your WBT tokens.
+					<br> You must contribute ETH from this wallet in order to have your tokens appear here.</p>
+			</div>
+		</div>
+	</header>
+	<div class="b-form-place container">
+
+		<div class="row" id='reg'>
+			<div class="col-md-offset-1 col-md-9" style='display:none' id='right'>
+
+				<div class="login-desc" id="desc_login">
+					<center>
+						<h3 style="padding-bottom: 8px;">WorldBit ICO Wallet with ShapeShift Integration</h3>
+					</center>
+					<p>This is an ETH and WBT token wallet that you can use for the ICO.</p>
+					<p>Please enter your info in these boxes and hit Enter to go into wallet. The password is only used when you buy tokens
+						in the wallet.</p>
+					<p> We do not keep your keys, please save them. This keyphrase will be used for getting back into the system or MyEtherWallet
+						after the ICO.</p>
+					<p>The
+						<b>Wallet String</b> in the textfile you are downloading is your only access back into this sytem, so
+						<b>do not destroy this file</b>, and
+						<b>back it up</b>.</p>
+				</div>
+
+				<div class="b-form-cont">
+					<h2 class="b-form-cont__title" style="display: flex;">
+						<span id="btn_create_account" style="float: left;">Create account (below)</span>
+						<span style="margin-left: auto; margin-right: auto;">or</span>
+						<span style='float:right; cursor: pointer;' onclick='importkey();'>Import wallet string</span>
+					</h2>
+					<div class="b-form b-form--place container-fluid">
+						<div class="b-form__row">
+							<input type="text" id='name' placeholder="Enter your name (and press Enter)">
+						</div>
+						<div class="b-form__row email" style='display:none'>
+							<input type="text" id='email' placeholder="Enter your email (and press Enter)">
+						</div>
+						<div class="b-form__row pre_pass" style='display:none'>
+							<input type="password" id='pre_pass' placeholder="Enter password (and press Enter)">
+						</div>
+						<div class="b-form__row pass" style='display:none'>
+							<input type="password" id='pass' placeholder="Confirm password (and press Enter)">
+						</div>
+					</div>
+				</div>
+
+				<div class="b-form-cont">
+					<h2 class="b-form-cont__title" style="display: flex;">
+						Crowdsale Fund Raising
+					</h2>
+					<div class="b-form b-form--place container-fluid">
+						<div class="b-form__row">
+							<div id="progress_funding" class="ui green progress">
+								<div class="bar">
+								</div>
+							</div>
+						</div>
+						<div class="b-form__row">
+							<span id="token_sold">...</span>
+							<span>&nbsp;Of&nbsp;</span>
+							<span id="token_total">...</span>
+						</div>
+						<div class="b-form__row">
+							<p>18th Dec 24th Dec Tranche 0% - 9.99% Price USD $ 0.86 - <i>Open</i></p>
+							<p>25th Dec 31st Dec Tranche 10% - 19.99% Price USD $ 0.88 - <i>Upcoming</i></p>
+							<p>1st Jan 7th Jan Tranche 20% - 29.99% Price USD $ 0.91 - <i>Upcoming</i></p>
+							<p>8th Jan 14th Jan Tranche 30% - 39.99% Price USD $ 0.94 - <i>Upcoming</i></p>
+							<p>15th Jan 21st Jan Tranche 40% - 49.99% Price USD $ 0.97 - <i>Upcoming</i></p>
+							<p>22nd Jan 1st Feb Tranche 50% - 59.99% Price USD $ 1.94 - <i>Upcoming</i></p>
+							<p>2nd Feb 14th Feb Tranche 60% - 69.99% Price USD $ 1.03 - <i>Upcoming</i></p>
+							<p>15th Feb Tranche 70% - 79.99% Price USD $ 1.07 - <i>Upcoming</i></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div id='savekey' style='display:none' class='row savekey'>
+			<div class="col-md-12">
+				<div class="b-form-cont">
+
+					<h2 class="b-form-cont__title">
+						<span class='hiname'>Hi</span>
+						<a href="#" style='float:right' onclick='localStorage.clear();window.location.reload();return false'>Exit</a>
+					</h2>
+					<div class="b-form b-form--place container-fluid">
+						<div class='b-form__row'>
+
+							Write down these 12 words using
+							<i class="fa fa-pencil" aria-hidden="true"></i> and
+							<i class="fa fa-file-o" aria-hidden="true"></i>:
+							<br> (these can be used in MyEtherWallet after ICO)
+							<br>
+							<textarea id='d12keys' onclick="this.focus();this.select()" readonly="readonly">.:...:.</textarea>
+							<br>
+							<br>
+							<i style='color:red' class="fa fa-exclamation-triangle" aria-hidden="true"></i> We do not store your private keys and will not be able to restore them.
+							<br>
+							<br>
+							<a href='#' class='btn' onclick='sv("WorldBit.keys",exportKeystore());return false'>Download keys</a>
+							<br>
+							<Br>You will continue after save
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mainboard" id='info2' style='display:none'>
+
+			<div class="col-md-4 tabs griditem" id='a1'>
+
+				<!-- .b-form-cont -->
+				<div class="b-form-cont">
+					<div style='float:right;padding: 15px 18px;'>
+						<a href="#" id='exprta' onclick='sv("WorldBit.keys",exportKeystore());return false'>Export keys</a> |
+						<a href="#" onclick='localStorage.clear();window.location.reload();return false'>Exit</a>
+					</div>
+					<h2 class="b-form-cont__title hiname">Wallet Contents</h2>
+					<div class="b-form b-form--place container-fluid">
+						<div class="b-form__row">
+
+							<div id='balancediv'>
+								<p id="balance_tokens" class='balance-tokens'></p>
+								<p id="balance_eth" class='balance-tokens'></p>
+								<a href='#' style='display:none' id='withall' onclick='try2withdrawETH();'>Withdraw all ETH</a>
+								<span id='consolewithdraw'> /
+									<a onclick='window.location.reload()' href="">Refresh</a>
+								</span>
+							</div>
+							<hr />
+							<div id='shapeshift' style="margin-bottom: 30px;">
+								<script>
+									function shapeshift_click(a, e) {
+										e.preventDefault();
+										var link = 'https://shapeshift.io/shifty.html?destination=' + openkey + '&amount=10&output=ETH';
+										window.open(link, '1418115287605',
+											'width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=0,left=0,top=0');
+										return false;
+									}
+								</script>
+	
+								<a onclick="shapeshift_click(this, event);" href="#">
+									<img src="https://shapeshift.io/images/shifty/xs_light_ss.png" class="ss-button">
+								</a>
+								<p style='margin-top: 10px;'>0.5 ETH minimum is <b>only</b> for using ShapeShift to convert tokens to ETH. You may send any amount of ETH to this wallet address to purchase any amount WBT!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- .b-form-cont -->
+			</div>
+
+			<div class="col-md-4 tabs griditem" id='try2buy'>
+
+				<!-- .b-form-cont -->
+				<div class="b-form-cont">
+					<h2 class="b-form-cont__title">Your ETH and WBT Wallet Address</h2>
+					<div class="b-form b-form--place container-fluid">
+						<div class='b-form__row' style="padding: 0 3px;">
+							<div id='console'></div>
+							<input type='text' style='margin-bottom:8px; font-size: 13.5px;' id='openkey' value=''>
+							<img id='ethqr' src='' width="180px" height="180px" style='display: block; margin: auto;'>
+						</div>
+					</div>
+				</div>
+				<!-- .b-form-cont -->
+			</div>
+
+			<div class="col-md-4 tabs griditem">
+
+				<!-- .b-form-cont -->
+				<div class="b-form-cont">
+					<h2 class="b-form-cont__title">Buy WBT Tokens with ETH</h2>
+					<div class="b-form b-form--place container-fluid">
+						<div class='b-form__row'>
+							<div class="front-box8">Choose amount of token you want buy</div>
+
+							<div class="front-box2">
+
+								<font class="fi2" style="margin-top: 5px;">TOKEN(s)</font>
+								<input type="text" id="amount" class="inputslider">
+								<div class="slider-range-i" style="margin-top: 8px;">
+									<div id="slider-range-max"></div>
+								</div>
+								<p style="margin-top: 10px;">
+									<font>ETH</font>
+									<span id='ethfor100hmq'>...</span>
+								</p>
+								<span style="display:block; margin: auto; text-align: center">Equivalent Funds</span>
+								<hr />
+								<p>
+									<font>BTC</font>
+									<span id='btcfor100hmq'>...</span>
+								</p>
+								<p class="plast">
+									<font>USD</font>
+									<span id='usdfor100hmq'>....</span>
+								</p>
+							</div>
+
+							<input type='button' onclick='try2buy($("#ethfor100hmq").html());' id='try2buybtn' class='btn' value='Buy now'>
+							<span id='consolebuy'></span>
+							<hr>
+							<p>It may take a few minutes for your ETH to appear in the wallet, please be patient.</p>
+							<p>Remember to keep a little ETH in this wallet! During the ICO you will be able to deploy portals and objects into the WorldBit system for only the cost of ETH gas!</p>
+						</div>
+					</div>
+				</div>
+				<!-- .b-form-cont -->
+			</div>
+
+			<div class="col-md-8 tabs griditem" id='sendtokens'>
+
+				<!-- .b-form-cont -->
+				<div class="b-form-cont">
+					<h2 class="b-form-cont__title">Send tokens</h2>
+					<div class="b-form b-form--place container-fluid">
+						<div class='b-form__row'>
+							<div class='onlyhavetoken'>
+								To address:
+								<Br>
+								<input type='text' id='kuda' style='margin-bottom:20px' id='openkey22' value='0x'> Amount:
+								<Br>
+								<input type='text' id='skoko' style='margin-bottom:20px' value=''>
+
+								<input type='button' onclick='try2send()' class='btn' name='BTN' value='Send'>
+								<span id='consolesend'></span>
+								<script>
+									function try2send() {
+										$("#consolesend").html('.:...::');
+										sendRwTr(0, "0xa9059cbb" + EthJS.ABI.rawEncode(["address", "uint"], [$("#kuda").val(), $("#skoko").val()]).toString(
+											"hex"));
+									}
+								</script>
+							</div>
+
+							<div class='onlynohavetoken'>
+								<a href="https://worldbit.com/kyc" target="_blank">Please fill out KYC info to enable Send button</a> 
+								<p>This is not necessary to use this wallet, as no tokens can be transferred until after the ICO. KYC is for sending tokens after the ICO and does not affect the functionality of this wallet.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- .b-form-cont -->
+			</div>
+
+			<div class="col-md-4 tabs griditem" id='a4'>
+
+				<!-- .b-form-cont -->
+				<div class="b-form-cont">
+					<h2 class="b-form-cont__title">ETH Market Rates</h2>
+					<div class="b-form b-form--place container-fluid">
+						<div class='b-form__row'>
+							Price USD :
+							<span id='price_usd'></span>
+							<br> Price BTC :
+							<span id='price_btc'></span>
+							<div id='ethereumstat'></div>
+						</div>
+					</div>
+				</div>
+				<!-- .b-form-cont -->
+			</div>
+
+			<div class="col-md-4 tabs griditem">
+				<div class="b-form-cont">
+					<h2 class="b-form-cont__title">Sell tokens</h2>
+					<div class="b-form b-form--place container-fluid">
+						<div class='b-form__row'>
+							1 WBT TOKEN =
+							<span id='onetoken'>.</span>
+							<br />
+							<p>Not available until after the ICO.</p>
+							<div class='sellnow'>
+								You can sell
+								<span class='balacnetokensnocss'></span> token(s) immediately for
+								<span class='hnew'></span>
+								<input type='button' onclick='try2sell();' class='btn ' value='SELL NOW'>
+								<div id='consolesell'></div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 tabs griditem">
+				<div class="b-form-cont">
+					<h2 class="b-form-cont__title">Market rates</h2>
+					<div class="b-form b-form--place container-fluid">
+						<div class='b-form__row'>
+							Pending token listing in markets
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12 tabs griditem" id='a4'>
+
+				<!-- .b-form-cont -->
+				<div class="b-form-cont">
+					<h2 class="b-form-cont__title">Transactions</h2>
+					<div class="b-form b-form--place container-fluid">
+						<div class='b-form__row'>
+							<div id='tx_history'></div>
+						</div>
+					</div>
+				</div>
+				<!-- .b-form-cont -->
+			</div>
+
+		</div>
+		<!-- .row -->
+	</div>
+	<!-- .b-form-place -->
+
+	<script src="js/web3.min.js"></script>
+	<script src="js/lightwallet.min.js"></script>
+
+	<script src="js/progress.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.6/sweetalert2.min.js"></script>
+	<script src="erc20dashboard.js?v=15"></script>
+	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+	<script>
+		var buyPrice = parseInt(Web3.utils.toWei('0.0028', 'ether'));
+		var sellPrice = parseInt(Web3.utils.toWei('0.0028', 'ether'));
+		var tokens_for_one_eth = 1000000000000000000 / buyPrice;
+
+		$("#onetoken").html(sellPrice / 1000000000000000000 + " ETH");
+		// extrahook = function () {
+		// 	if ($("#skoko").val() > 0) {
+		// 		$(".sellnow").show();
+
+		// 		$(".hnew").html(Math.round(sellPrice / 1000000000000000000 * $("#skoko").val() * 1000000) / 1000000 + " ETH");
+
+		// 	}
+		// }
+		// disable sell token function now.
+		// extrahook();
+		recalc();
+
+		$.get(option_etherscan_api + "/api?module=stats&action=ethprice&apikey=" + option_etherscan_api_key, function (d) {
+			console.log(d);
+			// $("#market_cap_usd").html(d.result.ethusd + " USD");
+			$("#price_btc").html(d.result.ethbtc);
+			$("#price_usd").html(d.result.ethusd);
+			recalc();
+		}, "json");
+	</script>
+
+	<script>
+		build_state();
+		rebalance();
+		setInterval(rebalance, 10000);
+	</script>
+	<script>
+		if (localStorage.getItem("privkey")) {
+			$("#info2").html("You use old version of dashboard. Save this key " + localStorage.getItem("privkey") +
+				". Open myetherwallet.com > login using plain key > and add token " + erc20contract_address +
+				". Or <a href='#' onclick='localStorage.clear();window.location.reload();return false'>logout</a>"
+			);
+		}
+	</script>
+</body>
+
+</html>
